@@ -8,6 +8,7 @@ import { NavBar, Footer } from "../../components/index.js";
 
 export default () => {
   const dispatch = useDispatch();
+  const seasons = ["Otoño", "Invierno", "Primavera", "Verano"];
   const countries = useSelector((state) => state.countries);
 
   const [form, setForm] = useState({
@@ -15,14 +16,15 @@ export default () => {
     difficulty: 1,
     season: "",
     duration: 24,
+    country_id: "",
   });
 
-  const [error, setError] = useState({
-    name: "",
-    difficulty: 1,
-    season: "",
-    duration: 24,
-  });
+  // const [error, setError] = useState({
+  //   name: "",
+  //   difficulty: 1,
+  //   season: "",
+  //   duration: 24,
+  // });
 
   const changeHandler = (event) => {
     const property = event.target.name;
@@ -45,7 +47,7 @@ export default () => {
               <p>Nombre de la Actividad(*)</p>
               <input
                 type="text"
-                placeholder="Viaje Familiar"
+                placeholder=" Escribe aqui el nombre..."
                 id="name"
                 name="name"
                 autoComplete="off"
@@ -61,13 +63,19 @@ export default () => {
           <div className="seasonActContainer">
             <label>
               <p>Temporada(*):</p>
-              <div className="_customSelect_ytz0i_1">
-                <div className="_containerButton_1k60t_1">
-                  <button className="_button_1k60t_5" type="button">
-                    Escoje una temporada
-                  </button>
-                  <span className="_backButton_1k60t_54"></span>
-                </div>
+              <div className="seasonActSelect">
+                <select
+                  className="btnSeasonSelect"
+                  id="season"
+                  name="season"
+                  value={form.season}
+                  onChange={changeHandler}
+                >
+                  <option>Selecciona una temporada</option>
+                  {seasons.map((season) => {
+                    return <option key={season}>{season}</option>;
+                  })}
+                </select>
               </div>
             </label>
             <span className="messageAlert">*Debes escoger una temporada</span>

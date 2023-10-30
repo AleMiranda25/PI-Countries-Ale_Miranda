@@ -256,3 +256,92 @@ input[type="range"]::-webkit-slider-thumb {
   color: var(--color-verde-claro);
   cursor: pointer;
 }
+
+/** Sección Season **/
+
+.seasonActContainer {
+  position: relative;
+  margin: 0 auto;
+  transition: 0.5s;
+  width: 100%;
+}
+
+.seasonActSelect {
+  min-width: 200px;
+  position: relative;
+}
+
+.selectContainer {
+  position: relative;
+}
+
+.btnSeasonSelect {
+  font: inherit;
+  height: 40px;
+  color: var(--color-azul-oscuro);
+  background-color: var(--color-blanco);
+  left: -4px;
+  top: -4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid var(--color-negro);
+  z-index: 2;
+  overflow: hidden;
+  transition: left 0.1s ease, top 0.1s ease;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+button:disabled {
+  color: #5e5e5e;
+  background-color: var(--color-gris-op);
+  left: 0px;
+  top: 0px;
+}
+.btnSeasonSelect span {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5px;
+}
+.btnSeasonSelect:hover {
+  left: 0px;
+  top: 0px;
+}
+.seasonBackBtn {
+  height: 95%;
+  width: 100%;
+  position: absolute;
+  background-color: var(--color-negro);
+  left: 0;
+  top: 0;
+  border: 2px solid var(--color-negro);
+  border-radius: 14px;
+}
+
+.seasonOptnContainer {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  background-color: var(--color-blanco);
+  border: 2px solid var(--color-negro);
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.seasonOption {
+  display: flex;
+  align-items: center;
+  padding: 0 15px 0 16px;
+  height: 50px;
+  transition: --color-blanco 0.1s ease-out;
+  margin-bottom: -4px;
+  cursor: pointer;
+  font-weight: 500;
+}
