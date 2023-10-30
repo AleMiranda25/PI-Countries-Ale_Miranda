@@ -1,0 +1,258 @@
+/* Importo la fuente  */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap");
+body {
+  /* min-width: fit-content; */
+  font-family: "Montserrat", sans-serif;
+}
+
+.formContainer {
+  background-image: url("../../assets/Backgrounds/bgForm.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 30px;
+}
+
+.formTitle {
+  text-align: center;
+  padding-top: 0px;
+  margin-bottom: -15px;
+  color: var(--color-blanco);
+  text-shadow: 2px 2px var(--color-azul-oscuro);
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.formActivity {
+  background-color: rgba(255, 255, 255, 0.231); /* color de fondo */
+  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 450px;
+  border: 2px solid var(--color-negro);
+  padding: 5px 35px 15px 35px;
+  border-radius: 8px;
+  margin-top: 45px;
+  margin-bottom: 35px;
+  color: #1b1d21;
+}
+
+.formActivity button:disabled {
+  cursor: inherit;
+  left: 0px;
+  top: 0px;
+
+  color: #5e5e5e;
+  background-color: var(--color-gris-op);
+}
+
+.btnConfirmForm {
+  font: inherit;
+  height: 46px;
+  color: var(--color-azul-oscuro);
+  background-color: whitesmoke;
+  left: -4px;
+  top: -4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid var(--color-negro);
+  z-index: 2;
+  overflow: hidden;
+  transition: left 0.1s ease, top 0.1s ease;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  padding: 16px 12px;
+  margin-top: 8px;
+}
+.btnConfirmForm:hover {
+  color: #fff; /* color de fuente hover */
+}
+.btnConfirmForm::after {
+  content: "";
+  background: var(--color-naranja); /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.btnConfirmForm:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+/** Seccion Slider **/
+
+.difficultySlider {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.sliderMarks {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  color: var(--color-azul-oscuro);
+}
+
+.sliderMark {
+  position: relative;
+}
+
+.sliderMark:before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background-color: var(--color-azul-oscuro);
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+/** Inputs and Labels **/
+
+.actForm label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.actForm label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.actForm p {
+  font-size: 1.1rem;
+  font-weight: bolder;
+  color: var(--color-blanco);
+  text-shadow: 1px 1px var(--color-azul-oscuro);
+}
+
+/** Sección Temporada **/
+
+.seasonActContainer {
+  position: relative;
+  margin: 0 auto;
+  transition: 0.5s;
+  width: 100%;
+}
+
+/** Sección Duracion **/
+
+.durationActContainer label input,
+.nameActContainer label input,
+.formCountrySearch label input {
+  background-color: var(--color-blanco);
+  height: 25px;
+  border: 2px solid var(--color-gris-op);
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  color: var(--color-azul-oscuro);
+}
+.durationActContainer label textarea {
+  background-color: var(--color-blanco);
+  padding: 15px 5px 0;
+  border: 2px solid var(--color-azul-oscuro);
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  color: var(--color-azul-oscuro);
+}
+.durationActContainer label input:focus {
+  box-shadow: 0 0 5px 3px var(--color-verde-claro);
+}
+.durationActContainer label textarea:focus {
+  box-shadow: 0 0 5px 3px var(--color-verde-claro);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.messageError {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: red;
+  display: inline-block;
+  margin-top: 11px;
+}
+.messageAlert {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--color-crema);
+  text-shadow: 1px 1px var(--color-negro);
+}
+
+/** Seccion Paises **/
+.formCountrySearch {
+  position: relative;
+}
+.formCountrySearch img {
+  width: auto;
+  height: 15px;
+  box-shadow: 0 0 2px #00000080;
+  margin-right: 3px;
+}
+.formCountrySearch span {
+  font-size: 10px;
+  font-weight: 600;
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  color: #3a3a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px 7px 6px;
+  position: absolute;
+  right: -2px;
+  top: -2px;
+}
+.formCountrySearch input {
+  height: 25px;
+}
+input[type="range"] {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  border: none;
+  outline: none;
+}
+input[type="range"]:hover {
+  background-color: var(--color-azul-oscuro);
+}
+input[type="range"]::-webkit-slider-thumb {
+  color: var(--color-verde-claro);
+  cursor: pointer;
+}

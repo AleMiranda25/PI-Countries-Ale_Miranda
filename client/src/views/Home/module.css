@@ -1,0 +1,10 @@
+.homeContainer {
+  background-image: url("../../assets/Backgrounds/bgHome.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+  align-items: center;
+}
