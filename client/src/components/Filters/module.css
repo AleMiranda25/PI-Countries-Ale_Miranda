@@ -1,0 +1,57 @@
+.filtersContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  transition: 0.5s;
+  width: 100%;
+}
+
+.orderContainer,
+.filterContainer {
+  min-width: 200px;
+  position: relative;
+}
+
+.orderContainer select,
+.filterContainer select {
+  text-align: center;
+  font: inherit;
+  height: 40px;
+  color: var(--color-crema);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid var(--color-gris-op);
+  z-index: 2;
+  transition: left 0.1s ease, top 0.1s ease;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+
+select option {
+  background: var(--color-negro);
+}
+
+.clearFilters button {
+  text-align: center;
+  font: inherit;
+  height: 40px;
+  width: 40px;
+  color: var(--color-crema);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid var(--color-gris-op);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .filtersContainer {
+    display: grid;
+    justify-content: center;
+    gap: 25px;
+  }
+}

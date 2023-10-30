@@ -1,21 +1,32 @@
 //Funcionalidad
 import { useSelector } from "react-redux";
+import { useState } from "react";
 // Estilos
 import "./module.css";
 //Componentes
-import { CountryCard } from "../index";
+import { CountryCard, Pagination } from "../index";
 
 export default () => {
   const countries = useSelector((state) => state.countries);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const countriesPerPage = 10;
+
+  // Obtiene los paises actuales a mostrar
+  const indexOfLastCountry = currentPage * countriesPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const currentCountries = countries.slice(
+    indexOfFirstCountry,
+    indexOfLastCountry
+  );
+
+  // Cambia de pagina
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
-      <div>
-        <h1 className="textoDeHome">¡Disfruta de los paises del mundo!</h1>
-      </div>
-      <div className="contenidoDeFiltros"> Aqui irian los filtros </div>
       <div className="mainCard">
-        {countries.map((c) => {
+        {currentCountries.map((c) => {
           return (
             <CountryCard
               key={c.id}
@@ -28,6 +39,12 @@ export default () => {
           );
         })}
       </div>
+      <Pagination
+        countriesPerPage={countriesPerPage}
+        totalCountries={countries.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </>
   );
 };

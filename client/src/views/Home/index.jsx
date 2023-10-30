@@ -9,6 +9,7 @@ import {
   CountryCardsContainer,
   NavBar,
   Footer,
+  Filters,
 } from "../../components/index.js";
 
 const Home = () => {
@@ -20,6 +21,10 @@ const Home = () => {
   return (
     <div className="homeContainer">
       <NavBar />
+      <div>
+        <h1 className="textoDeHome">¡Disfruta de los paises del mundo!</h1>
+      </div>
+      <Filters />
       <CountryCardsContainer />
       <Footer />
     </div>

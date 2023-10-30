@@ -5,6 +5,7 @@ const initialState = {
   countries: [],
   activities: [],
   countryId: [],
+  searchCountry: [],
   currentPage: 1,
   filteredCountry: [],
 };

@@ -8,7 +8,6 @@ import { NavBar, Footer } from "../../components/index.js";
 
 export default () => {
   const dispatch = useDispatch();
-  const seasons = ["Otoño", "Invierno", "Primavera", "Verano"];
   const countries = useSelector((state) => state.countries);
 
   const [form, setForm] = useState({
@@ -71,10 +70,13 @@ export default () => {
                   value={form.season}
                   onChange={changeHandler}
                 >
-                  <option>Selecciona una temporada</option>
-                  {seasons.map((season) => {
-                    return <option key={season}>{season}</option>;
-                  })}
+                  <option value="" disabled selected>
+                    Selecciona una temporada
+                  </option>
+                  <option value="Otoño">Otoño</option>
+                  <option value="Invierno">Invierno</option>
+                  <option value="Primavera">Primavera</option>
+                  <option value="Verano">Verano</option>
                 </select>
               </div>
             </label>
@@ -94,7 +96,7 @@ export default () => {
                 onChange={changeHandler}
               />
               <span className="messageAlert">
-                *La actividad debe durar mínimo un día
+                *La actividad debe durar mínimo un día (en horas)
               </span>
             </label>
           </div>
@@ -118,18 +120,19 @@ export default () => {
                   <span className="sliderMark">4</span>
                   <span className="sliderMark">5</span>
                 </div>
-                <span>Nivel de dificultad: {form.difficulty}</span>
+                <span>Dificultad seleccionada: {form.difficulty}</span>
               </div>
             </label>
           </div>
           <div className="formCountries">
-            <label htmlFor="countries">
+            <label htmlFor="pais">
               <p>Países(*)</p>
               <div className="autoCompleteContainer">
                 <div className="formCountrySearch">
-                  <label htmlFor="paisAsignado">
+                  <label htmlFor="pais">
                     <input
                       name="pais"
+                      id="pais"
                       type="text"
                       placeholder="Escribe un país..."
                       value=""

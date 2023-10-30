@@ -1,5 +1,14 @@
 import axios from "axios";
-import { GET_ACTIVITIES, GET_COUNTRIES, GET_COUNTRY } from "./actions-types";
+import {
+  FILTER_BY_ACTIVITY,
+  FILTER_BY_CONTINENT,
+  GET_ACTIVITIES,
+  GET_COUNTRIES,
+  GET_COUNTRY,
+  ORDER_ALPH,
+  ORDER_BY_POPULATION,
+  SEARCH_BY_NAME,
+} from "./actions-types";
 
 // COUNTRIES
 
@@ -25,8 +34,8 @@ const getCountry = (id) => {
 // const searchByName = (name) => {
 //   return async function (dispatch) {
 //     let nameData = await axios.get(`/recipes/?name=${name}`);
-//     let recipeNameInfo = nameData.data;
-//     dispatch({ type: SEARCH_BY_NAME, payload: recipeNameInfo });
+//     let countryNameInfo = nameData.data;
+//     dispatch({ type: SEARCH_BY_NAME, payload: countryNameInfo });
 //   };
 // };
 
@@ -39,5 +48,35 @@ const getActivities = () => {
     dispatch({ type: GET_ACTIVITIES, payload: activities });
   };
 };
+
+// FILTROS Y ORDENAMIENTOS
+
+// const filterByContinent = (continent) => {
+//   return {
+//     type: FILTER_BY_CONTINENT,
+//     payload: gender,
+//   };
+// };
+
+// const filterByActivity = (activity) => {
+//   return {
+//     type: FILTER_BY_ACTIVITY,
+//     payload: gender,
+//   };
+// };
+
+// const orderAlph = (option) => {
+//   return {
+//     type: ORDER_ALPH,
+//     payload: orden,
+//   };
+// };
+
+// const orderPopulation = (option) => {
+//   return {
+//     type: ORDER_BY_POPULATION,
+//     payload: orden,
+//   };
+// };
 
 export { getCountries, getCountry, getActivities };

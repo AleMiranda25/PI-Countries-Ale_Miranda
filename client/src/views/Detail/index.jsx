@@ -13,7 +13,7 @@ export default () => {
 
   const dispatch = useDispatch();
   const countryId = useSelector((state) => state.countryId);
-
+  console.log(countryId);
   useEffect(() => {
     dispatch(getCountry(id));
   }, [dispatch, id]);
@@ -23,7 +23,7 @@ export default () => {
       <NavBar />
       <div className="detailCard">
         <div className="detailData">
-          <h2 className="dataName">{countryId.name.toUpperCase()}</h2>
+          <h2 className="dataName">{countryId.name?.toUpperCase()}</h2>
           <h3>ID: {countryId.id}</h3>
           <h3>CONTINENTE: {countryId.continent}</h3>
           <h3>CAPITAL: {countryId.capital}</h3>

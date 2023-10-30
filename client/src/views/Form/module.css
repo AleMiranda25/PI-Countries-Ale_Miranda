@@ -116,7 +116,8 @@ body {
   justify-content: space-between;
   width: 100%;
   font-size: 12px;
-  color: var(--color-azul-oscuro);
+  color: var(--color-blanco);
+  text-shadow: 1px 1px var(--color-negro);
 }
 
 .sliderMark {
@@ -128,7 +129,7 @@ body {
   position: absolute;
   width: 2px;
   height: 6px;
-  background-color: var(--color-azul-oscuro);
+  background-color: var(--color-blanco);
   top: -10px;
   left: 50%;
   transform: translate(-50%);
@@ -296,32 +297,6 @@ input[type="range"]::-webkit-slider-thumb {
   width: 100%;
   padding: 8px 12px;
   font-size: 1rem;
-}
-button:disabled {
-  color: #5e5e5e;
-  background-color: var(--color-gris-op);
-  left: 0px;
-  top: 0px;
-}
-.btnSeasonSelect span {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 5px;
-}
-.btnSeasonSelect:hover {
-  left: 0px;
-  top: 0px;
-}
-.seasonBackBtn {
-  height: 95%;
-  width: 100%;
-  position: absolute;
-  background-color: var(--color-negro);
-  left: 0;
-  top: 0;
-  border: 2px solid var(--color-negro);
-  border-radius: 14px;
 }
 
 .seasonOptnContainer {
