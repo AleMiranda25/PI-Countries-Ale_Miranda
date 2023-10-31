@@ -4,10 +4,10 @@ import { useState } from "react";
 // Estilos
 import "./module.css";
 //Componentes
-import { CountryCard, Pagination } from "../index";
+import { CountryCard, Filters, Pagination } from "../index";
 
 export default () => {
-  const countries = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.filteredCountries);
 
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 10;
@@ -25,6 +25,7 @@ export default () => {
 
   return (
     <>
+      <Filters />
       <div className="mainCard">
         {currentCountries.map((c) => {
           return (

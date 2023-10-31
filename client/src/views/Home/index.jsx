@@ -1,7 +1,7 @@
 // Funcionalidad
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCountries } from "../../redux/actions";
+import { getCountries, getActivities } from "../../redux/actions";
 // Estilos
 import "./module.css";
 // Componentes
@@ -9,13 +9,13 @@ import {
   CountryCardsContainer,
   NavBar,
   Footer,
-  Filters,
 } from "../../components/index.js";
 
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCountries());
+    dispatch(getActivities());
   }, []);
 
   return (
@@ -24,7 +24,6 @@ const Home = () => {
       <div>
         <h1 className="textoDeHome">¡Disfruta de los paises del mundo!</h1>
       </div>
-      <Filters />
       <CountryCardsContainer />
       <Footer />
     </div>

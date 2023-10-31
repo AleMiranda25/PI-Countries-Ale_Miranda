@@ -26,14 +26,6 @@ export default ({
     });
   };
 
-  // const onKeyDown = (event) => {
-  //     if(event.keyCode === 13){
-  //         if(event.target.value >= 1 && event.target.value <= pageNumbers.length && !isNaN(Number(event.target.value))){
-  //             setPagina(Number(event.target.value))
-  //         }
-  //     }
-  // }
-
   return (
     <div>
       <ul className="pagination">
@@ -64,16 +56,6 @@ export default ({
         >
           &raquo;
         </a>
-        {/* {pageNumbers.map((number) => (
-          <li
-            key={number}
-            value={number}
-            className={currentPage === number ? "currentPage" : "pageItem"}
-            onClick={onClick}
-          >
-            {number}
-          </li>
-        ))} */}
       </ul>
     </div>
   );
