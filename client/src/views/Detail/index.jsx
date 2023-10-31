@@ -30,8 +30,24 @@ export default () => {
           <h3>SUBREGION: {countryId?.subregion}</h3>
           <h3>ÁREA: {`${countryId?.area} KM²`}</h3>
           <h3>POBLACIÓN: {countryId.population}</h3>
+          <h3>
+            ACTIVIDADES:
+            {`  ${
+              countryId?.Activities?.length > 0
+                ? countryId?.Activities.length
+                : ""
+            }`}
+            {countryId?.Activities?.length > 0
+              ? countryId.Activities.flatMap((a) => <p>&bull; {a.name}</p>)
+              : "No posee actividades"}
+          </h3>
         </div>
-        <img src={countryId.flagImage} alter={`Bandera de ${countryId.name}`} />
+        <div className="dataImage">
+          <img
+            src={countryId.flagImage}
+            alter={`Bandera de ${countryId.name}`}
+          />
+        </div>
       </div>
     </div>
   );

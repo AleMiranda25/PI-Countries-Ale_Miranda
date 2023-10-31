@@ -49,7 +49,8 @@ select option {
 }
 
 @media screen and (max-width: 600px) {
-  .filtersContainer {
+  .filtersContainer,
+  .clearFilters {
     display: grid;
     justify-content: center;
     gap: 25px;

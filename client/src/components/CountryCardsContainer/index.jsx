@@ -8,7 +8,6 @@ import { CountryCard, Filters, Pagination } from "../index";
 
 export default () => {
   const countries = useSelector((state) => state.filteredCountries);
-
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 10;
 

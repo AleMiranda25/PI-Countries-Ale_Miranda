@@ -1,55 +1,51 @@
 //Funcionalidad
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { combinedOrder } from "../../redux/actions";
+import {
+  setContinentFilter,
+  setActivityFilter,
+  setAlphabeticalOrder,
+  setPopulationOrder,
+} from "../../redux/actions";
 // Estilos
 import "./module.css";
 //Componentes
 
 export default () => {
-  // Obtengo los paises y las actividades y creo arreglos para las opciones seleccionable
-  const countries = useSelector((state) => state.filteredCountries);
-  const activities = useSelector((state) => state.activities);
-  const continents = [...new Set(countries.flatMap((c) => c.continent))];
-  const actList = activities.flatMap((c) => c.name);
-
-  // const dispatch = useDispatch();
-
-  // const [selectReload, setselectReload] = useState({
-  //   sort: "A-Z",
-  // });
-
-  // function onChange(e) {
-  //   let sort = e.target.value;
-  //   if (sort === "A-Z" || sort === "Z-A") dispatch(orderAlph(sort));
-  //   if (sort === "Ascendente" || sort === "Descendente")
-  //     dispatch(orderPopulation(sort));
-  //   if (sort === "ascendent" || sort === "descendent")
-  //     dispatch(sortWeight(sort));
-  //   setselectReload(sort);
-  // }
-  //onChange={onChange} value={selectReload.sort} */
-
   const dispatch = useDispatch();
-  const [nameOrder, setNameOrder] = useState("A-Z");
-  const [populationOrder, setPopulationOrder] = useState("Ascendente");
+  // Obtengo los paises y las actividades y creo arreglos para las opciones seleccionable
+  const countries = useSelector((state) => state.countries);
+  const activities = useSelector((state) => state.activities);
+  // A partir de los estados obtengo un arreglo de continentes y una lista de actividades
+  const continents = [...new Set(countries.flatMap((c) => c.continent))];
+  const activityList = activities.flatMap((c) => c.name);
 
-  // Esta función se ejecutará cada vez que cambie una opción en los selectores
-  const applyFilters = () => {
-    console.log([nameOrder, populationOrder]);
-    dispatch(combinedOrder([nameOrder, populationOrder]));
+  // Estados locales para los filtros y ordenamientos
+  const continentFilter = useSelector((state) => state.continentFilter);
+  const activityFilter = useSelector((state) => state.activityFilter);
+  const alphabeticalOrder = useSelector((state) => state.alphabeticalOrder);
+  const populationOrder = useSelector((state) => state.populationOrder);
+  console.log({
+    continentFilter,
+    activityFilter,
+    alphabeticalOrder,
+    populationOrder,
+  });
+
+  const handleContinentChange = (e) => {
+    console.log(e.target.value);
+    dispatch(setContinentFilter(e.target.value));
   };
 
-  // Esta función se ejecutará cuando cambie el selector de orden por nombre
-  const handleNameOrderChange = (e) => {
-    setNameOrder(e.target.value);
-    if (nameOrder !== "") applyFilters(); // Aplica los filtros cuando cambia la opción
+  const handleActivityChange = (e) => {
+    dispatch(setActivityFilter(e.target.value));
   };
 
-  // Esta función se ejecutará cuando cambie el selector de orden por población
-  const handlePopulationOrderChange = (e) => {
-    setPopulationOrder(e.target.value);
-    if (populationOrder !== "") applyFilters(); // Aplica los filtros cuando cambia la opción
+  const handleAlphabeticalOrder = (e) => {
+    dispatch(setAlphabeticalOrder(e.target.value));
+  };
+
+  const handlePopulationOrder = (e) => {
+    dispatch(setPopulationOrder(e.target.value));
   };
 
   const handleClick = () => {
@@ -61,10 +57,11 @@ export default () => {
       <div className="orderContainer">
         <select
           id="orderAlph"
-          value={nameOrder}
-          onChange={handleNameOrderChange}
+          onChange={handleAlphabeticalOrder}
+          // value={alphabeticalOrder || ""}
+          defaultValue=""
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Orden Alfabético
           </option>
           <option value="A-Z">A-Z</option>
@@ -74,10 +71,10 @@ export default () => {
       <div className="orderContainer">
         <select
           id="orderPopulation"
-          value={populationOrder}
-          onChange={handlePopulationOrderChange}
+          onChange={handlePopulationOrder}
+          value={populationOrder || ""}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Orden Población
           </option>
           <option value="Ascendente">Ascendente</option>
@@ -85,9 +82,13 @@ export default () => {
         </select>
       </div>
       <div className="filterContainer">
-        <select id="filterContinent" value="">
-          <option value="" disabled selected>
-            Continente
+        <select
+          id="filterContinent"
+          onChange={handleContinentChange}
+          value={continentFilter || ""}
+        >
+          <option value="" disabled>
+            Continentes
           </option>
           {continents.map((c) => {
             return (
@@ -99,11 +100,15 @@ export default () => {
         </select>
       </div>
       <div className="filterContainer">
-        <select id="filterActivity" value="">
-          <option value="" disabled selected>
-            Actividad
+        <select
+          id="filterActivity"
+          onChange={handleActivityChange}
+          value={activityFilter || ""}
+        >
+          <option value="" disabled>
+            Actividades
           </option>
-          {actList.map((a) => {
+          {activityList.map((a) => {
             return (
               <option key={a} value={a}>
                 {a}
@@ -113,7 +118,7 @@ export default () => {
         </select>
       </div>
       <div className="clearFilters">
-        <button onClick={(event) => handleClick(event)}>
+        <button onClick={() => handleClick()}>
           <i className="fa fa-refresh" />
         </button>
       </div>

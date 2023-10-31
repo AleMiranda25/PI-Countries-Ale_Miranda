@@ -1,5 +1,4 @@
 .pagination {
-  list-style-type: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +6,7 @@
   color: var(--color-blanco);
   font-weight: bolder;
   font-size: larger;
+  padding-left: 0;
 }
 .pageItem {
   width: 20px;

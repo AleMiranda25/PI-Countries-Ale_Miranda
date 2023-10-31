@@ -1,12 +1,13 @@
 import axios from "axios";
 import {
-  COMBINED_ORDER,
-  FILTER_BY_ACTIVITY,
-  FILTER_BY_CONTINENT,
   GET_ACTIVITIES,
   GET_COUNTRIES,
   GET_COUNTRY,
   SEARCH_BY_NAME,
+  SET_ACTIVITY_FILTER,
+  SET_ALPHABETICAL_ORDER,
+  SET_CONTINENT_FILTER,
+  SET_POPULATION_ORDER,
 } from "./actions-types";
 
 // COUNTRIES
@@ -50,39 +51,33 @@ const getActivities = () => {
 
 // FILTROS Y ORDENAMIENTOS
 
-const combinedOrder = (order) => {
-  return {
-    type: COMBINED_ORDER,
-    payload: order,
-  };
+const setContinentFilter = (continent) => ({
+  type: SET_CONTINENT_FILTER,
+  payload: continent,
+});
+
+const setActivityFilter = (activity) => ({
+  type: SET_ACTIVITY_FILTER,
+  payload: activity,
+});
+
+const setAlphabeticalOrder = (order) => ({
+  type: SET_ALPHABETICAL_ORDER,
+  payload: order,
+});
+
+const setPopulationOrder = (order) => ({
+  type: SET_POPULATION_ORDER,
+  payload: order,
+});
+
+export {
+  getCountries,
+  getCountry,
+  getActivities,
+  searchByName,
+  setContinentFilter,
+  setActivityFilter,
+  setAlphabeticalOrder,
+  setPopulationOrder,
 };
-
-// const filterByContinent = (continent) => {
-//   return {
-//     type: FILTER_BY_CONTINENT,
-//     payload: gender,
-//   };
-// };
-
-// const filterByActivity = (activity) => {
-//   return {
-//     type: FILTER_BY_ACTIVITY,
-//     payload: gender,
-//   };
-// };
-
-// const orderAlph = (option) => {
-//   return {
-//     type: ORDER_ALPH,
-//     payload: option,
-//   };
-// };
-
-// const orderPopulation = (option) => {
-//   return {
-//     type: ORDER_BY_POPULATION,
-//     payload: option,
-//   };
-// };
-
-export { getCountries, getCountry, getActivities, combinedOrder, searchByName };

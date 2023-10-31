@@ -19,34 +19,58 @@ body {
   display: flex;
   text-align: center;
   flex-direction: row;
-  justify-content: space-evenly;
-  gap: 150px;
+  justify-content: space-around;
+  gap: 25px;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   color: var(--color-azul-oscuro);
   text-shadow: 2px 2px var(--color-gris-claro);
   background-color: rgba(255, 255, 255, 0.231);
-  padding: 10px 35px 35px 50px;
-  margin: 65px 0 15px 0;
-  width: 75%;
+  padding: 25px;
+  margin: 100px 0 15px 0;
+  width: 90%;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
 }
 
+.dataImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
 .detailCard h3 {
   text-align: left;
 }
 
-.detailCard img {
+.dataImage img {
   height: 50%;
-  width: 40%;
-  margin-top: 80px;
+  width: 90%;
   border-radius: 20px;
 }
 
 .dataName {
   font-weight: bolder;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .detailContainer {
+    flex-direction: column;
+  }
+  .detailCard {
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 35px;
+  }
+
+  .detailCard img {
+    height: 70%;
+    width: 80%;
+    margin-top: 0;
+    margin-left: 25px;
+    margin-top: 50px;
+  }
 }
