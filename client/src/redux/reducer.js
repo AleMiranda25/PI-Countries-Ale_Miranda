@@ -2,6 +2,7 @@ import {
   GET_ACTIVITIES,
   GET_COUNTRIES,
   GET_COUNTRY,
+  POST_ACTIVITY,
   SEARCH_BY_NAME,
   SET_ACTIVITY_FILTER,
   SET_ALPHABETICAL_ORDER,
@@ -43,7 +44,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         activities: payload,
       };
-
+    // Creacion de Actividad
+    case POST_ACTIVITY:
+      return {
+        ...state,
+        activities: [...state.activities, payload],
+      };
+    // Busqueda por nombre
     case SEARCH_BY_NAME:
       return {
         ...state,
@@ -63,13 +70,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     case SET_ACTIVITY_FILTER:
       let filtereActivity = [...state.filteredCountries];
-
-      filtereActivity = filtereActivity.filter(
-        (country) => country.Activities[0]?.name === payload
-      );
+      const resultados = [];
+      filtereActivity.forEach((country) => {
+        country.Activities.forEach((activity) => {
+          if (activity.name === payload) {
+            resultados.push(country);
+            return; // Si encontramos una coincidencia, podemos detener el bucle interno.
+          }
+        });
+      });
       return {
         ...state,
-        filteredCountries: filtereActivity,
+        filteredCountries: resultados,
         activityFilter: payload,
       };
     case SET_ALPHABETICAL_ORDER:

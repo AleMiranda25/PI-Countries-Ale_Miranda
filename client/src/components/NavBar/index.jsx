@@ -16,7 +16,14 @@ export default () => {
   };
   return (
     <div className="topnav" id="myTopnav">
-      <a className="active" onClick={() => navigate("/home")}>
+      <a
+        className="active"
+        onClick={() =>
+          location.pathname === "/home"
+            ? window.location.reload()
+            : navigate("/home")
+        }
+      >
         <i className="fa fa-home" /> Home
       </a>
       <a className="createBtn" onClick={() => navigate("/create")}>

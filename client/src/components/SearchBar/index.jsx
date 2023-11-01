@@ -12,18 +12,6 @@ export default () => {
   //const [error, setError] = useState(null); // agregamos un estado para el mensaje de error
   const handleChange = (e) => {
     setName(e.target.value);
-    // console.log(name);
-    // validamos el valor del campo de búsqueda
-    //const regex = /^[a-zA-Z0-9]+$/; // expresión regular que solo permite letras y números
-    //if (!regex.test(name)) {
-    //  alert(
-    //    "El campo de búsqueda no puede contener caracteres especiales o estar vacio"
-    //  );
-    //  return;
-    //}
-
-    // si la validación es correcta, enviamos la búsqueda
-    //setError(null); // reseteamos el mensaje de error
     dispatch(searchByName(name));
   };
 

@@ -111,6 +111,10 @@ body {
   width: 100%;
 }
 
+.difficultySlider span {
+  color: var(--color-crema);
+}
+
 .sliderMarks {
   display: flex;
   justify-content: space-between;
@@ -165,6 +169,10 @@ body {
   margin: 0 auto;
   transition: 0.5s;
   width: 100%;
+}
+
+.seasonActContainer option {
+  color: var(--color-blanco);
 }
 
 /** Sección Duracion **/
@@ -319,4 +327,16 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: -4px;
   cursor: pointer;
   font-weight: 500;
+}
+
+.countryList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.countryList img {
+  cursor: pointer;
+  padding: 2px;
+  border: 2px solid var(--color-gris-op);
+  border-radius: 5px;
 }

@@ -1,6 +1,8 @@
 // Funcionalidad
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { postActivity, searchByName } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 // Estilos
 import "./module.css";
 // Componentes
@@ -8,16 +10,20 @@ import { NavBar, Footer } from "../../components/index.js";
 
 export default () => {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.countries);
+  const navigate = useNavigate();
+  const [pais, setPais] = useState("");
+  const paises = useSelector((state) => state.countries);
+  const activities = useSelector((state) => state.activities);
 
   const [form, setForm] = useState({
     name: "",
     difficulty: 1,
     season: "",
     duration: 24,
-    country_id: "",
+    countries: [],
   });
 
+  console.log(form);
   // const [error, setError] = useState({
   //   name: "",
   //   difficulty: 1,
@@ -25,14 +31,71 @@ export default () => {
   //   duration: 24,
   // });
 
+  const handlerChange = (event) => {
+    const value = event.target.value;
+    setPais(value);
+    dispatch(searchByName(pais));
+  };
+
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-
     setForm({
       ...form,
       [property]: value,
     });
+  };
+
+  const clickImage = () => {
+    setForm({
+      ...form,
+    });
+  };
+
+  const renderCountryList = () => {
+    const paisesFiltrados = paises.filter((country) =>
+      country.name.toLowerCase().includes(pais.toLowerCase())
+    );
+
+    if (paisesFiltrados.length < 5) {
+      return (
+        <ul className="countryList">
+          {paisesFiltrados.map((country) => (
+            <img
+              key={country.id}
+              onClick={() => {
+                clickImage();
+                if (!form.countries.includes(country.id))
+                  form.countries.push(country.id);
+              }}
+              src={country.flagImage}
+            />
+          ))}
+        </ul>
+      );
+    }
+
+    return null;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (activities.find((ele) => ele.name === form.name)) {
+      alert("¡Esta actividad ya existe!");
+      return;
+    }
+
+    alert("¡Actividad creada!");
+    dispatch(postActivity(form));
+    setForm({
+      ...form,
+      name: "",
+      difficulty: 1,
+      season: "",
+      duration: 24,
+      countries: [],
+    });
+    navigate("/home");
   };
 
   return (
@@ -67,10 +130,10 @@ export default () => {
                   className="btnSeasonSelect"
                   id="season"
                   name="season"
-                  value={form.season}
+                  value={form.season || ""}
                   onChange={changeHandler}
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Selecciona una temporada
                   </option>
                   <option value="Otoño">Otoño</option>
@@ -129,16 +192,25 @@ export default () => {
               <p>Países(*)</p>
               <div className="autoCompleteContainer">
                 <div className="formCountrySearch">
-                  <label htmlFor="pais">
+                  <p></p>
+                  <label htmlFor="countriesId">
                     <input
-                      name="pais"
-                      id="pais"
+                      name="countries"
+                      id="countries"
                       type="text"
                       placeholder="Escribe un país..."
-                      value=""
-                      onChange={changeHandler}
+                      value={pais}
+                      autoComplete="off"
+                      onChange={handlerChange}
                     />
                   </label>
+                  <div>
+                    {renderCountryList()}
+                    <p>Países agregados: </p>{" "}
+                    {form.countries.flatMap((c) => (
+                      <p>{c}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
               <span className="messageAlert">
@@ -148,7 +220,12 @@ export default () => {
             </label>
           </div>
           <div className="containerButton">
-            <button className="btnConfirmForm" type="submit" disabled="">
+            <button
+              className="btnConfirmForm"
+              type="submit"
+              disabled=""
+              onClick={handleSubmit}
+            >
               PUBLICAR ACTIVIDAD
             </button>
           </div>

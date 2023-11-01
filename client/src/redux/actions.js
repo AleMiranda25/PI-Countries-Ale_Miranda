@@ -3,6 +3,7 @@ import {
   GET_ACTIVITIES,
   GET_COUNTRIES,
   GET_COUNTRY,
+  POST_ACTIVITY,
   SEARCH_BY_NAME,
   SET_ACTIVITY_FILTER,
   SET_ALPHABETICAL_ORDER,
@@ -49,6 +50,16 @@ const getActivities = () => {
   };
 };
 
+const postActivity = async (activity) => {
+  await axios
+    .post(`/activities`, activity)
+    .catch((error) => alert(error.message));
+  return {
+    type: POST_ACTIVITY,
+    payload: activity,
+  };
+};
+
 // FILTROS Y ORDENAMIENTOS
 
 const setContinentFilter = (continent) => ({
@@ -75,6 +86,7 @@ export {
   getCountries,
   getCountry,
   getActivities,
+  postActivity,
   searchByName,
   setContinentFilter,
   setActivityFilter,
