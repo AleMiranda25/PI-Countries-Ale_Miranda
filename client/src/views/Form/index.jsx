@@ -23,7 +23,6 @@ export default () => {
     countries: [],
   });
 
-  console.log(form);
   // const [error, setError] = useState({
   //   name: "",
   //   difficulty: 1,
@@ -95,7 +94,7 @@ export default () => {
       duration: 24,
       countries: [],
     });
-    navigate("/home");
+    window.location.reload();
   };
 
   return (

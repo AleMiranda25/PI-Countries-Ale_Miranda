@@ -13,7 +13,6 @@ export default () => {
 
   const dispatch = useDispatch();
   const countryId = useSelector((state) => state.countryId);
-  console.log(countryId);
   useEffect(() => {
     dispatch(getCountry(id));
   }, [dispatch, id]);

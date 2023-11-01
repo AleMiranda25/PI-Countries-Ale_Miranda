@@ -24,15 +24,8 @@ export default () => {
   const activityFilter = useSelector((state) => state.activityFilter);
   const alphabeticalOrder = useSelector((state) => state.alphabeticalOrder);
   const populationOrder = useSelector((state) => state.populationOrder);
-  console.log({
-    continentFilter,
-    activityFilter,
-    alphabeticalOrder,
-    populationOrder,
-  });
 
   const handleContinentChange = (e) => {
-    console.log(e.target.value);
     dispatch(setContinentFilter(e.target.value));
   };
 
@@ -58,8 +51,8 @@ export default () => {
         <select
           id="orderAlph"
           onChange={handleAlphabeticalOrder}
-          // value={alphabeticalOrder || ""}
-          defaultValue=""
+          value={alphabeticalOrder || ""}
+          // defaultValue=""
         >
           <option value="" disabled>
             Orden Alfabético
